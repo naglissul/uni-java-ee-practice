@@ -1,5 +1,6 @@
 package lt.vu.persistence;
 
+import lt.vu.entities.Player;
 import lt.vu.entities.Team;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -28,4 +29,8 @@ public class TeamsDAO {
     public Team findOne(Integer id) {
         return em.find(Team.class, id);
     }
+    public Team update(Team team){
+        return em.merge(team);
+    }
+
 }

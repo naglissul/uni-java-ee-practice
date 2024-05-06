@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+    <title>List of Sponsors</title>
+</h:head>
+<h:body>
+    <h1>Add Team to Sponsor</h1>
+    <h:form>
+        <h:selectOneMenu value="#{sponsorBean.selectedTeamId}">
+            <f:selectItems value="#{sponsorBean.availableTeams}"
+                           var="team"
+                           itemValue="#{team.id}"
+                           itemLabel="#{team.name}" />
+        </h:selectOneMenu>
+
+        <h:selectOneMenu value="#{sponsorBean.selectedSponsorId}">
+            <f:selectItems value="#{sponsorBean.allSponsors}"
+                           var="sponsor"
+                           itemValue="#{sponsor.id}"
+                           itemLabel="#{sponsor.name}" />
+        </h:selectOneMenu>
+
+        <h:commandButton value="Add Team to Sponsot"
+                         action="#{sponsorBean.addTeamToSponsor()}" />
+    </h:form>
+
+
+    <h2>Sponsots</h2>
+    <h:dataTable value="#{sponsorBean.allSponsors}" var="sponsor">
+        <h:column>
+            <f:facet name="header">ID</f:facet>
+            #{sponsor.id}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Name</f:facet>
+            #{sponsor.name}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Teams</f:facet>
+            <h:dataTable value="#{sponsor.teams}" var="team">
+                <h:column>
+                    #{team.name}
+                </h:column>
+            </h:dataTable>
+        </h:column>
+    </h:dataTable>
+</h:body>
+</html>

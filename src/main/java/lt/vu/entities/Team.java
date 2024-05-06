@@ -29,6 +29,15 @@ public class Team {
     @OneToMany(mappedBy = "team")
     private List<Player> players = new ArrayList<>();
 
+    // THE MANY TO MANY RELATION!!!!-------------------------------------------
+    @ManyToMany
+    @JoinTable(
+            name = "TEAM_SPONSOR", // Name of the join table
+            joinColumns = @JoinColumn(name = "TEAM_ID", referencedColumnName = "ID"), // Foreign key for Team in join table
+            inverseJoinColumns = @JoinColumn(name = "SPONSOR_ID", referencedColumnName = "ID") // Foreign key for Sponsor in join table
+    )
+    private List<Sponsor> sponsors;
+
     @Version
     @Column(name = "OPT_LOCK_VERSION")
     private Integer version;
