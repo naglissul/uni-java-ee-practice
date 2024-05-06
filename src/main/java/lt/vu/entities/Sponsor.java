@@ -3,7 +3,10 @@ package lt.vu.entities;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.faces.validator.FacesValidator;
 import javax.persistence.*;
+import javax.validation.Valid;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.List;
@@ -23,6 +26,7 @@ public class Sponsor implements Serializable {
 
     @Size(max = 50)
     @Column(name = "NAME")
+    @Pattern(regexp = "^[a-zA-Z ]+$")
     private String name;
 
     @Column(name = "JERSEY_NUMBER")

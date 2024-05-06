@@ -69,7 +69,6 @@ public class SponsorBean {
             // Log the error or handle it appropriately
             return "index";
         }
-
     }
 
 
